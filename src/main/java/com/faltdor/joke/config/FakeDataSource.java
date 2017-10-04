@@ -46,6 +46,14 @@ public class FakeDataSource {
 	public void setDriverClassName(String driverClassName) {
 		this.driverClassName = driverClassName;
 	}
+
+	@Override
+	public String toString() {
+		return "FakeDataSource [url=" + url + ", username=" + username + ", password=" + password + ", driverClassName="
+				+ driverClassName + "]";
+	}
+	
+	
 	
 	
 	
