@@ -20,8 +20,11 @@ public class JokeController {
 	@RequestMapping({"/",""})
 	public String showJoke(Model model) {
 		model.addAttribute("joke",this.jokeService.getJoke());
+		
 		return "chucknories";
 	}
+	
+	//TODO:made merge
 	
 	
 	
