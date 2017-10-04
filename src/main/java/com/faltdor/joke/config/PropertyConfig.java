@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@PropertySource("classpath:datasource.properties")
+@PropertySource({"classpath:datasource.properties","classpath:jms.properties"})
 public class PropertyConfig {
 
 	@Value("${datasource.url}")
@@ -22,9 +22,23 @@ public class PropertyConfig {
 	@Value("${datasource.driverClassName}")
 	String driverClassName;
 	
+	@Value("${jms.url}")
+	String jmsUrl;
+	
+	@Value("${jms.username}")
+	String jmsUsername;
+	
+	@Value("${jms.password}")
+	String jmsPassword;
+	
 	@Bean
 	public FakeDataSource dataSource() {
 		return new FakeDataSource(url,username,password,driverClassName);
+	}
+	
+	@Bean
+	public JmsFakeDataSource jmsSource() {
+		return new JmsFakeDataSource(jmsUrl,jmsUsername,jmsPassword);
 	}
 	
 	@Bean
